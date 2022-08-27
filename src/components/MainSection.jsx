@@ -5,9 +5,9 @@ import MainContent from "./MainContent";
 
 const MainSection = () => {
     return (
-        <div className="w-[85%] flex">
+        <div className="w-[80%] flex bg-white rounded-r-3xl drop-shadow-lg rounded-b-none">
             <SideBar />
-            {/* <MainContent /> */}
+            <MainContent />
         </div>
     );
 };
