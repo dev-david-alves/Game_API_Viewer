@@ -38,31 +38,33 @@ const MainContent = () => {
     return (
         <main className="w-[90%] h-screen flex flex-col items-center justify-center">
             <div className="w-full h-[90%] flex flex-col px-10">
-                <div className="w-full flex items-center justify-between">
-                    <div>
-                        <h1 className="text-xl font-bold">Game API</h1>
-                        <p className="text-slate-500">
-                            Encontre informações sobre seus jogos favoritos.
-                        </p>
-                    </div>
-                    <button className="w-[40px] h-[40px] bg-[#F5F5F5] rounded-md flex items-center justify-center drop-shadow-md">
-                        <BiSearchAlt2
-                            style={{ fontSize: "1.5rem", color: "#737373" }}
-                        />
-                    </button>
-                </div>
-                <div className="mt-2">
-                    <h3 className="text-gray-600 text-lg font-semibold mb-3">
-                        Melhores games segundo a crítica
-                    </h3>
-                    <div className="flex justify-between items-center">
-                        {cards.map((card) => (
-                            <Card
-                                key={card.id}
-                                data={card.data}
-                                color={card.color}
+                <div className="flex flex-col w-full h-[50%]">
+                    <div className="w-full flex items-center justify-between">
+                        <div>
+                            <h1 className="text-xl font-bold">Game API</h1>
+                            <p className="text-slate-500">
+                                Encontre informações sobre seus jogos favoritos.
+                            </p>
+                        </div>
+                        <button className="w-[40px] h-[40px] bg-[#F5F5F5] rounded-md flex items-center justify-center drop-shadow-md">
+                            <BiSearchAlt2
+                                style={{ fontSize: "1.5rem", color: "#737373" }}
                             />
-                        ))}
+                        </button>
+                    </div>
+                    <div className="mt-2">
+                        <h3 className="text-gray-600 text-lg font-semibold mb-3">
+                            Melhores games segundo a crítica
+                        </h3>
+                        <div className="flex justify-between items-center">
+                            {cards.map((card) => (
+                                <Card
+                                    key={card.id}
+                                    data={card.data}
+                                    color={card.color}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <Table />
