@@ -1,11 +1,7 @@
 import React from "react";
 
 const Card = ({ data, color }) => {
-    console.log(color);
-
     const cardStyles = "w-[240px] rounded-lg py-3 px-4 drop-shadow-lg " + color;
-
-    console.log(cardStyles);
 
     return (
         <div className={cardStyles}>
