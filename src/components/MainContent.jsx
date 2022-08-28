@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 import Card from "./Card";
@@ -35,6 +35,11 @@ const cards = [
 ];
 
 const MainContent = () => {
+    const [search, setSearch] = useState("");
+    const handleSearchClick = (e) => {
+        setSearch("");
+    };
+
     return (
         <main className="w-[90%] h-screen flex flex-col items-center justify-center">
             <div className="w-full h-[90%] flex flex-col px-10">
@@ -46,11 +51,26 @@ const MainContent = () => {
                                 Encontre informações sobre seus jogos favoritos.
                             </p>
                         </div>
-                        <button className="w-[40px] h-[40px] bg-[#F5F5F5] rounded-md flex items-center justify-center drop-shadow-md">
-                            <BiSearchAlt2
-                                style={{ fontSize: "1.5rem", color: "#737373" }}
+                        <div className="flex items-center">
+                            <input
+                                type="text"
+                                value={search}
+                                placeholder="Pesquisar"
+                                className="bg-gray-200 w-[200px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
+                                onChange={(e) => setSearch(e.target.value)}
                             />
-                        </button>
+                            <button
+                                className="hover:brightness-95 w-[40px] h-[40px] bg-[#F5F5F5] rounded-r-md flex items-center justify-center"
+                                onClick={handleSearchClick}
+                            >
+                                <BiSearchAlt2
+                                    style={{
+                                        fontSize: "1.5rem",
+                                        color: "#737373",
+                                    }}
+                                />
+                            </button>
+                        </div>
                     </div>
                     <div className="mt-2">
                         <h3 className="text-gray-600 text-lg font-semibold mb-3">

@@ -8,10 +8,10 @@
   }
 
   td {
-    @apply text-center font-normal px-3 text-sm truncate py-1; 
+    @apply text-center font-semibold px-3 text-sm truncate py-1; 
   }
 
   tr:nth-child(2n) {
-    @apply bg-gray-400;
+    @apply bg-gray-200;
   }
 }

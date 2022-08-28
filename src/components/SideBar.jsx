@@ -11,8 +11,11 @@ const buttonStyles = {
         color: "#ffffff",
         margin: "0 auto",
         alignSelf: "center",
+        hover: {
+            filter: "brightness(0.4)",
+        },
     },
-    aStyle: "w-[50px] h-[50px] flex justify-center align-center rounded-lg drop-shadow-md mx-auto",
+    aStyle: "w-[50px] h-[50px] flex justify-center align-center rounded-lg hover:brightness-125 drop-shadow-md mx-auto",
 };
 
 const buttons = [

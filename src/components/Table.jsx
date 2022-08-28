@@ -47,10 +47,14 @@ const Table = () => {
                         {nums.map((num) => (
                             <tr key={num}>
                                 <td>Grand Theft Auto</td>
-                                <td>Ação, Aventura</td>
-                                <td>Pc, Xbox, Playstation 5</td>
-                                <td>91</td>
-                                <td>72h</td>
+                                <td className="text-blue-600">
+                                    Ação, Aventura
+                                </td>
+                                <td className="text-red-600">
+                                    Pc, Xbox, Playstation 5
+                                </td>
+                                <td className="text-green-600">91</td>
+                                <td className="text-amber-500">72h</td>
                             </tr>
                         ))}
                     </tbody>

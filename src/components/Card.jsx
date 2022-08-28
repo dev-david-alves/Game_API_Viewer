@@ -1,7 +1,9 @@
 import React from "react";
 
 const Card = ({ data, color }) => {
-    const cardStyles = "w-[240px] rounded-lg py-3 px-4 drop-shadow-lg " + color;
+    const cardStyles =
+        "hover:brightness-110 w-[240px] rounded-lg py-3 px-4 drop-shadow-lg " +
+        color;
 
     return (
         <div className={cardStyles}>
