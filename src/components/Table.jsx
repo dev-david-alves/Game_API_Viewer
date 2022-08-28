@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from "./Button";
 import Pagination from "./Pagination";
 
-const tableData = {
-    name: "Grand Theft Auto",
-    genre: "Ação, Aventura",
-    platform: "Pc, Xbox, Playstation 5",
-    metacritic: "91",
-    time: "72h",
-};
-
-const nums = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
-    60, 61,
-];
+import { useGameContext } from "../providers/gameProvider";
 
 const Table = () => {
+    const {
+        data,
+        setData,
+        category,
+        setCategory,
+        genres,
+        selectedGender,
+        setSelectedGender,
+        platforms,
+        selectedPlatform,
+        setSelectedPlatform,
+    } = useGameContext();
+    const [currentGames, setCurrentGames] = useState(data);
+
+    const handleChangeGender = (selectedGender) => {
+        setSelectedGender(selectedGender);
+    };
+
+    const handleChangePlatform = (selectedPlatform) => {
+        setSelectedPlatform(selectedPlatform);
+        console.log(selectedPlatform);
+    };
+
     return (
         <div className="w-full drop-shadow-lg mt-5 h-[50%] bg-white rounded py-4 flex flex-col">
             <div className="flex justify-between items-center px-5">
@@ -26,9 +36,34 @@ const Table = () => {
                     Todos os jogos
                 </p>
                 <div className="flex justify-between">
-                    <Button color="bg-[#71357C]" text="Jogos" />
-                    <Button color="bg-[#458B90]" text="Gêneros" />
-                    <Button color="bg-[#FD7E50]" text="Plataformas" />
+                    <select
+                        name="select"
+                        className="bg-[#458B90] outline-none hover:brightness-125 py-1 mr-2 text-white rounded-full font-bold px-2 drop-shadow-lg"
+                        onChange={(e) => handleChangeGender(e.target.value)}
+                    >
+                        <option value={""}>Todos</option>
+                        {genres.map((genre, index) => {
+                            return (
+                                <option key={index} value={genre.name}>
+                                    {genre.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    <select
+                        name="select"
+                        className="bg-[#FD7E50] outline-none hover:brightness-125 py-1 text-white rounded-full font-bold px-2 drop-shadow-lg"
+                        onChange={(e) => handleChangePlatform(e.target.value)}
+                    >
+                        <option value={""}>Todos</option>
+                        {platforms.map((platform, index) => {
+                            return (
+                                <option key={index} value={platform.name}>
+                                    {platform.name}
+                                </option>
+                            );
+                        })}
+                    </select>
                 </div>
             </div>
 
@@ -44,23 +79,34 @@ const Table = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {nums.map((num) => (
-                            <tr key={num}>
-                                <td>Grand Theft Auto</td>
+                        {currentGames.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.name}</td>
                                 <td className="text-blue-600">
-                                    Ação, Aventura
+                                    {item.genres.map((genre, index) =>
+                                        index != item.genres.length - 1
+                                            ? `${genre.name}, `
+                                            : genre.name
+                                    )}
                                 </td>
                                 <td className="text-red-600">
-                                    Pc, Xbox, Playstation 5
+                                    {item.platforms.map(
+                                        (platform) =>
+                                            platform.platform.name + " "
+                                    )}
                                 </td>
-                                <td className="text-green-600">91</td>
-                                <td className="text-amber-500">72h</td>
+                                <td className="text-green-600">
+                                    {item.metacritic}
+                                </td>
+                                <td className="text-amber-500">
+                                    {item.playtime}h
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            <Pagination />
+            <Pagination setCurrentGames={setCurrentGames} />
         </div>
     );
 };

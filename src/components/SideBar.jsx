@@ -3,7 +3,7 @@ import { ImLinkedin } from "react-icons/im";
 import { BsGithub } from "react-icons/bs";
 import { AiFillInstagram } from "react-icons/ai";
 
-import Man from "../assets/man.jpg";
+import DavidImage from "../assets/david.jpg";
 
 const buttonStyles = {
     stx: {
@@ -23,16 +23,19 @@ const buttons = [
         id: 1,
         icon: <ImLinkedin style={buttonStyles.stx} />,
         style: buttonStyles.aStyle + " bg-[#0073B0]",
+        link: "https://www.linkedin.com/in/dev-david-alves",
     },
     {
         id: 2,
         icon: <BsGithub style={buttonStyles.stx} />,
         style: buttonStyles.aStyle + " bg-black",
+        link: "https://github.com/dev-david-alves",
     },
     {
         id: 3,
         icon: <AiFillInstagram style={buttonStyles.stx} />,
         style: buttonStyles.aStyle + " bg-[#F06222]",
+        link: "https://www.instagram.com/deivi.als/",
     },
 ];
 
@@ -42,7 +45,7 @@ const SideBar = () => {
             <div className="w-full h-[90%] border-r-4 flex flex-col justify-evenly align-center py-7">
                 <div className="w-full flex flex-col">
                     <img
-                        src={Man}
+                        src={DavidImage}
                         alt="author"
                         className="w-[80px] mx-auto mb-3 rounded-full"
                     />
@@ -61,7 +64,7 @@ const SideBar = () => {
                 <div className="w-full h-full flex flex-col justify-between align-center py-10">
                     {buttons.map((button) => (
                         <a
-                            href="https://www.linkedin.com/in/dev-david-alves"
+                            href={button.link}
                             target="_blank"
                             key={button.id}
                             className={button.style}
