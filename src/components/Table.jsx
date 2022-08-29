@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 
 import { useGameContext } from "../providers/gameProvider";
 
-const Table = () => {
+const Table = ({ search }) => {
     const {
         data,
         setData,
@@ -26,13 +26,32 @@ const Table = () => {
 
     const handleChangePlatform = (selectedPlatform) => {
         setSelectedPlatform(selectedPlatform);
-        console.log(selectedPlatform);
     };
 
+    const handleOrderBy = (orderBy) => {
+        const orderedGames = [...currentGames].sort((a, b) => {
+            return a[orderBy] > b[orderBy] ? 1 : -1;
+        });
+
+        setCurrentGames(orderedGames);
+    };
+
+    useEffect(() => {
+        if (search !== "") {
+            const filteredGames = [...data].filter((game) => {
+                return game.name.toLowerCase().includes(search.toLowerCase());
+            });
+
+            setCurrentGames(filteredGames);
+        } else {
+            setCurrentGames(data);
+        }
+    }, [search]);
+
     return (
-        <div className="w-full drop-shadow-lg mt-5 h-[50%] bg-white rounded py-4 flex flex-col">
+        <div className="w-full drop-shadow-lg mt-10 h-[450px] border-2 bg-white rounded-2xl py-4 flex flex-col">
             <div className="flex justify-between items-center px-5">
-                <p className="text-gray-600 text-lg font-semibold mb-3">
+                <p className="text-gray-600 text-lg font-bold mb-3">
                     Todos os jogos
                 </p>
                 <div className="flex justify-between">
@@ -41,7 +60,7 @@ const Table = () => {
                         className="bg-[#458B90] outline-none hover:brightness-125 py-1 mr-2 text-white rounded-full font-bold px-2 drop-shadow-lg"
                         onChange={(e) => handleChangeGender(e.target.value)}
                     >
-                        <option value={""}>Todos</option>
+                        <option value={""}>Gêneros</option>
                         {genres.map((genre, index) => {
                             return (
                                 <option key={index} value={genre.name}>
@@ -55,7 +74,7 @@ const Table = () => {
                         className="bg-[#FD7E50] outline-none hover:brightness-125 py-1 text-white rounded-full font-bold px-2 drop-shadow-lg"
                         onChange={(e) => handleChangePlatform(e.target.value)}
                     >
-                        <option value={""}>Todos</option>
+                        <option value={""}>Plataformas</option>
                         {platforms.map((platform, index) => {
                             return (
                                 <option key={index} value={platform.name}>
@@ -71,11 +90,19 @@ const Table = () => {
                 <table className="table-fixed w-full">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Gênero</th>
-                            <th>Plataforma</th>
-                            <th>Metacritc</th>
-                            <th>Tempo de Jogo</th>
+                            <th onClick={() => handleOrderBy("name")}>Nome</th>
+                            <th onClick={() => handleOrderBy("genres")}>
+                                Gênero
+                            </th>
+                            <th onClick={() => handleOrderBy("platforms")}>
+                                Plataforma
+                            </th>
+                            <th onClick={() => handleOrderBy("metacritic")}>
+                                Metacritc
+                            </th>
+                            <th onClick={() => handleOrderBy("playtime")}>
+                                Tempo de Jogo
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,9 +117,10 @@ const Table = () => {
                                     )}
                                 </td>
                                 <td className="text-red-600">
-                                    {item.platforms.map(
-                                        (platform) =>
-                                            platform.platform.name + " "
+                                    {item.platforms.map((platform, index) =>
+                                        index != item.platforms.length - 1
+                                            ? `${platform.platform.name}, `
+                                            : platform.platform.name
                                     )}
                                 </td>
                                 <td className="text-green-600">

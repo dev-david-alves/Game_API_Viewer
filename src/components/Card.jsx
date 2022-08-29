@@ -1,35 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Card = ({ data, color }) => {
     const cardStyles =
-        "hover:brightness-110 w-[240px] rounded-lg py-3 px-4 drop-shadow-lg " +
+        "hover:brightness-110 w-[240px] rounded-lg py-2 px-4 drop-shadow-lg " +
         color;
-
     return (
         <div className={cardStyles}>
-            <h4 className="text-lg font-bold text-white mb-2">{data.title}</h4>
-            {data.platforms.map((platform) => (
-                <p
-                    className="inline-block text-white text-md mr-3 text-white"
-                    key={platform}
-                >
-                    {platform}
-                </p>
-            ))}
-            {data.genres.map((genre) => (
-                <p
-                    className="inline-block text-white text-md mr-3 text-white"
-                    key={genre}
-                >
-                    {genre}
-                </p>
-            ))}
+            <h4 className="text-lg font-bold text-white mb-2">{data.name}</h4>
+            <div className="w-full truncate removeTruncate">
+                {data.platforms.map((platform) => (
+                    <p
+                        className="inline-block text-white text-md mr-3 text-white"
+                        key={platform.id}
+                    >
+                        {platform.platform.name}
+                    </p>
+                ))}
+            </div>
+            <div className="w-full truncate removeTruncate">
+                {data.genres.map((genre) => (
+                    <p
+                        className="inline-block text-white text-md mr-3 text-white"
+                        key={genre.id}
+                    >
+                        {genre.name}
+                    </p>
+                ))}
+            </div>
 
-            <div className="w-full flex justify-between mt-1 items-center">
-                <div className="w-[160px] h-[10px] bg-black rounded">
-                    <div className="w-[120px] h-[10px] bg-green-400 rounded"></div>
-                </div>
-                <span className="text-green-400 text-md font-bold">91</span>
+            <div className="w-full border-t-2 mt-3">
+                <span className="text-green-400 text-md font-bold inline">
+                    <p className="text-gray-200 text-md font-bold inline">
+                        Nota metacritic:{" "}
+                    </p>{" "}
+                    {data.metacritic}
+                </span>
             </div>
         </div>
     );

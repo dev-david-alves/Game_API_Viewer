@@ -1,38 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 import Card from "./Card";
 import Table from "./Table";
 
-const cards = [
-    {
-        id: 1,
-        data: {
-            title: "Grand Theft Auto V",
-            platforms: ["PC", "Xbox", "Playstation 5"],
-            genres: ["Ação", "Aventura", "Mundo Aberto"],
-        },
-        color: "bg-[#71357C]",
-    },
-    {
-        id: 2,
-        data: {
-            title: "Teste Theft Auto V",
-            platforms: ["PC", "Xbox", "Playstation 5"],
-            genres: ["Ação", "Aventura", "Mundo Aberto"],
-        },
-        color: "bg-[#458B90]",
-    },
-    {
-        id: 3,
-        data: {
-            title: "Grand Theft Auto V",
-            platforms: ["PC", "Xbox", "Playstation 5"],
-            genres: ["Ação", "Aventura", "Mundo Aberto"],
-        },
-        color: "bg-[#FD7E50]",
-    },
-];
+import { useGameContext } from "../providers/gameProvider";
 
 const MainContent = () => {
     const [search, setSearch] = useState("");
@@ -40,12 +12,37 @@ const MainContent = () => {
         setSearch("");
     };
 
+    const { data } = useGameContext();
+
+    const [cards, setCards] = useState([]);
+
+    const colors = ["bg-[#71357C]", "bg-[#458B90]", "bg-[#FD7E50]"];
+
+    useEffect(() => {
+        const handleOrderBy = (orderBy) => {
+            const orderedGames = [...data].sort((a, b) => {
+                return a[orderBy] < b[orderBy] ? 1 : -1;
+            });
+            setCards(orderedGames.slice(0, 3));
+        };
+
+        handleOrderBy("metacritic");
+    }, [data]);
+
+    const handleOrderBy = (orderBy) => {
+        const orderedGames = [...currentGames].sort((a, b) => {
+            return a[orderBy] > b[orderBy] ? 1 : -1;
+        });
+
+        setCurrentGames(orderedGames);
+    };
+
     return (
         <main className="w-[90%] h-screen flex flex-col items-center justify-center">
             <div className="w-full h-[90%] flex flex-col px-10">
-                <div className="flex flex-col w-full h-[50%]">
+                <div className="flex flex-col w-full h-full">
                     <div className="w-full flex items-center justify-between">
-                        <div>
+                        <div className="w-full">
                             <h1 className="text-xl font-bold">Game API</h1>
                             <p className="text-slate-500">
                                 Encontre informações sobre seus jogos favoritos.
@@ -56,7 +53,7 @@ const MainContent = () => {
                                 type="text"
                                 value={search}
                                 placeholder="Pesquisar"
-                                className="bg-gray-200 w-[200px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
+                                className="bg-gray-200 w-[400px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
                                 onChange={(e) => setSearch(e.target.value)}
                             />
                             <button
@@ -72,22 +69,24 @@ const MainContent = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="mt-2">
-                        <h3 className="text-gray-600 text-lg font-semibold mb-3">
-                            Melhores games segundo a crítica
-                        </h3>
-                        <div className="flex justify-between items-center">
-                            {cards.map((card) => (
-                                <Card
-                                    key={card.id}
-                                    data={card.data}
-                                    color={card.color}
-                                />
-                            ))}
+                    <div className="flex justify-evenly items-center">
+                        <div className="mr-8 w-[430px] h-full">
+                            <h3 className="text-gray-600 text-lg font-bold mb-1 mt-2">
+                                Top 3 Games na tabela (Metacritic)
+                            </h3>
+                            <div className="flex flex-col justify-evenly items-center h-full">
+                                {cards.map((card, index) => (
+                                    <Card
+                                        key={card.id}
+                                        data={card}
+                                        color={colors[index]}
+                                    />
+                                ))}
+                            </div>
                         </div>
+                        <Table search={search} />
                     </div>
                 </div>
-                <Table />
             </div>
         </main>
     );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MainSection from "./components/MainSection";
-import FilterSection from "./components/FilterSection";
 import { GameProvider } from "./providers/gameProvider";
 
 import { fetchData, options } from "./utils/fetchData";
@@ -82,7 +81,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className="w-full flex bg-[#FAF5EE]">
+        <div className="w-screen h-screen flex bg-[#FAF5EE]">
             <GameProvider
                 data={data}
                 setData={setData}
@@ -98,7 +97,6 @@ const App = () => {
                 setSelectedPlatform={setSelectedPlatform}
             >
                 <MainSection />
-                <FilterSection />
             </GameProvider>
         </div>
     );

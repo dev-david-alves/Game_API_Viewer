@@ -4,14 +4,14 @@
 
 @layer components {
   th {
-    @apply text-center font-semibold text-blue-400;
+    @apply text-center font-semibold text-blue-400 cursor-pointer hover:text-blue-500;
   }
 
   td {
     @apply text-center font-semibold px-3 text-sm truncate py-1; 
   }
 
-  td:hover{
+  td:hover, .removeTruncate:hover{
     overflow: visible; 
     white-space: normal;
     height: auto; 

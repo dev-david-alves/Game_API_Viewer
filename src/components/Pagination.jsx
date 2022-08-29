@@ -6,7 +6,7 @@ const Pagination = ({ setCurrentGames }) => {
     const { data, selectedGenre, selectedPlatform } = useGameContext();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage] = useState(6);
+    const [gamesPerPage] = useState(9);
 
     let indexOfLastGame = currentPage * gamesPerPage;
     let indexOfFirstGame = indexOfLastGame - gamesPerPage;
