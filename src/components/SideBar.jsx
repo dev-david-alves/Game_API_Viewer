@@ -1,45 +1,14 @@
 import React from "react";
-import { ImLinkedin } from "react-icons/im";
-import { BsGithub } from "react-icons/bs";
-import { AiFillInstagram } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 import DavidImage from "../assets/david.jpg";
-
-const buttonStyles = {
-    stx: {
-        fontSize: "1.7rem",
-        color: "#ffffff",
-        margin: "0 auto",
-        alignSelf: "center",
-        hover: {
-            filter: "brightness(0.4)",
-        },
-    },
-    aStyle: "w-[50px] h-[50px] flex justify-center align-center rounded-lg hover:brightness-125 drop-shadow-md mx-auto",
-};
-
-const buttons = [
-    {
-        id: 1,
-        icon: <ImLinkedin style={buttonStyles.stx} />,
-        style: buttonStyles.aStyle + " bg-[#0073B0]",
-        link: "https://www.linkedin.com/in/dev-david-alves",
-    },
-    {
-        id: 2,
-        icon: <BsGithub style={buttonStyles.stx} />,
-        style: buttonStyles.aStyle + " bg-black",
-        link: "https://github.com/dev-david-alves",
-    },
-    {
-        id: 3,
-        icon: <AiFillInstagram style={buttonStyles.stx} />,
-        style: buttonStyles.aStyle + " bg-[#F06222]",
-        link: "https://www.instagram.com/deivi.als/",
-    },
-];
+import SocialButton from "./SocialButton";
+import { socialButtonsData } from "../utils/constants";
+import Button from "./Button";
 
 const SideBar = () => {
+    let navigate = useNavigate();
+
     return (
         <div className="w-[250px] h-screen flex flex-col align-center justify-center">
             <div className="w-full h-[90%] border-r-4 flex flex-col justify-evenly align-center py-7">
@@ -55,23 +24,27 @@ const SideBar = () => {
                     </h2>
 
                     <p className="text-left text-sm w-[80%] mx-auto mt-7 text-slate-500">
-                        Utilizando a API RAWG para procurar informações em tempo
+                        Utiliza a API RAWG para procurar informações em tempo
                         real sobre jogos, de todos os gêneros e todas as
-                        plataformas diponíveis.
+                        plataformas diponíveis na API.
                     </p>
                 </div>
 
                 <div className="w-full h-full flex flex-col justify-between align-center py-10">
-                    {buttons.map((button) => (
-                        <a
-                            href={button.link}
-                            target="_blank"
-                            key={button.id}
-                            className={button.style}
-                        >
-                            {button.icon}
-                        </a>
+                    {socialButtonsData.map((button) => (
+                        <div className="w-full mb-2" key={button.id}>
+                            <SocialButton key={button.id} button={button} />
+                        </div>
                     ))}
+                </div>
+
+                <div className="w-full flex items-center justify-center">
+                    <Button
+                        color="bg-[#47A5AB]"
+                        size="w-[150px]"
+                        text="Tutorial"
+                        onClick={() => navigate("/")}
+                    />
                 </div>
             </div>
         </div>

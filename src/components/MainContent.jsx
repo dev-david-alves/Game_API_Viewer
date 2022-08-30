@@ -77,7 +77,7 @@ const MainContent = () => {
                             <div className="flex flex-col justify-evenly items-center h-full">
                                 {cards.map((card, index) => (
                                     <Card
-                                        key={card.id}
+                                        key={index}
                                         data={card}
                                         color={colors[index]}
                                     />
