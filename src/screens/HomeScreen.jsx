@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import MainSection from "../components/MainSection";
+
+import SideBar from "../components/SideBar";
+import MainContent from "../components/MainContent";
+
 import { GameProvider } from "../providers/gameProvider";
 
 import { fetchData, options } from "../utils/fetchData";
 
 const HomeScreen = () => {
-    const [category, setCategory] = useState("games");
     const [data, setData] = useState([]);
     const [genres, setGenres] = useState([]);
     const [selectedGender, setSelectedGender] = useState("");
@@ -19,42 +21,10 @@ const HomeScreen = () => {
                 options
             );
 
-            if (selectedPlatform !== "" && selectedGender !== "") {
-                let filteredData = data.results.filter((game) =>
-                    game.platforms
-                        .map((platform) => platform.platform.name)
-                        .includes(selectedPlatform)
-                );
-
-                filteredData = filteredData.filter((game) =>
-                    game.genres
-                        .map((genre) => genre.name)
-                        .includes(selectedGender)
-                );
-
-                setData(filteredData);
-            } else {
-                if (selectedPlatform !== "") {
-                    const filteredData = data.results.filter((game) =>
-                        game.platforms
-                            .map((platform) => platform.platform.name)
-                            .includes(selectedPlatform)
-                    );
-                    setData(filteredData);
-                } else if (selectedGender !== "") {
-                    const filteredData = data.results.filter((game) =>
-                        game.genres
-                            .map((genre) => genre.name)
-                            .includes(selectedGender)
-                    );
-                    setData(filteredData);
-                } else {
-                    setData(data.results);
-                }
-            }
+            setData(data.results);
         };
         getData();
-    }, [selectedGender, selectedPlatform]);
+    }, []);
 
     useEffect(() => {
         const getGenres = async () => {
@@ -85,8 +55,6 @@ const HomeScreen = () => {
             <GameProvider
                 data={data}
                 setData={setData}
-                category={category}
-                setCategory={setCategory}
                 genres={genres}
                 setGenres={setGenres}
                 platforms={platforms}
@@ -96,7 +64,10 @@ const HomeScreen = () => {
                 selectedPlatform={selectedPlatform}
                 setSelectedPlatform={setSelectedPlatform}
             >
-                <MainSection />
+                <div className="w-full flex bg-white drop-shadow-lg rounded-b-none overflow-hidden">
+                    <SideBar />
+                    <MainContent />
+                </div>
             </GameProvider>
         </div>
     );

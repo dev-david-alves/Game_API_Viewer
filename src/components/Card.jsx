@@ -11,7 +11,7 @@ const Card = ({ data, color }) => {
             <div className="w-full truncate removeTruncate">
                 {data.platforms.map((platform, index) => (
                     <p
-                        className="inline-block text-white text-md mr-3 text-white"
+                        className="inline-block text-white text-md mr-3"
                         key={index}
                     >
                         {platform.platform.name}
@@ -21,7 +21,7 @@ const Card = ({ data, color }) => {
             <div className="w-full truncate removeTruncate">
                 {data.genres.map((genre, index) => (
                     <p
-                        className="inline-block text-white text-md mr-3 text-white"
+                        className="inline-block text-white text-md mr-3"
                         key={index}
                     >
                         {genre.name}

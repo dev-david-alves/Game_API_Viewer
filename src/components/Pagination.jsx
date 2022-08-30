@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useGameContext } from "../providers/gameProvider";
-
-const Pagination = ({ setCurrentGames }) => {
-    const { data, selectedGenre, selectedPlatform } = useGameContext();
-
+const Pagination = ({ currentGames, setCurrentShownGames }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [gamesPerPage] = useState(9);
 
@@ -15,22 +11,25 @@ const Pagination = ({ setCurrentGames }) => {
         indexOfLastGame = currentPage * gamesPerPage;
         indexOfFirstGame = indexOfLastGame - gamesPerPage;
 
-        setCurrentGames(data.slice(indexOfFirstGame, indexOfLastGame));
-    }, [currentPage]);
+        setCurrentShownGames(
+            [...currentGames].slice(indexOfFirstGame, indexOfLastGame)
+        );
+    }, [currentPage, currentGames]);
 
     useEffect(() => {
         setCurrentPage(1);
-        indexOfLastGame = currentPage * gamesPerPage;
-        indexOfFirstGame = indexOfLastGame - gamesPerPage;
-
-        setCurrentGames(data.slice(indexOfFirstGame, indexOfLastGame));
-    }, [selectedGenre, selectedPlatform, data]);
+    }, [currentGames]);
 
     const btnStyle =
         "bg-white border-2 hover:border-none text-slate-400 hover:bg-black hover:text-white text-sm font-semibold w-[35px] h-[35px] rounded";
 
+    const paginationStyle =
+        Math.ceil(currentGames.length / gamesPerPage) > 1
+            ? "flex items-center mx-auto my-auto"
+            : "hidden";
+
     return (
-        <div className="flex items-center mx-auto my-auto">
+        <div className={paginationStyle}>
             <button
                 className={btnStyle}
                 onClick={() => setCurrentPage((currentPage) => 1)}
@@ -57,7 +56,8 @@ const Pagination = ({ setCurrentGames }) => {
                 className={btnStyle}
                 onClick={() =>
                     setCurrentPage((currentPage) =>
-                        currentPage === Math.ceil(data.length / gamesPerPage)
+                        currentPage ===
+                        Math.ceil(currentGames.length / gamesPerPage)
                             ? currentPage
                             : currentPage + 1
                     )
@@ -68,10 +68,12 @@ const Pagination = ({ setCurrentGames }) => {
             <button
                 className={btnStyle}
                 onClick={() =>
-                    setCurrentPage(Math.ceil(data.length / gamesPerPage))
+                    setCurrentPage(
+                        Math.ceil(currentGames.length / gamesPerPage)
+                    )
                 }
             >
-                {Math.ceil(data.length / gamesPerPage)}
+                {Math.ceil(currentGames.length / gamesPerPage)}
             </button>
         </div>
     );

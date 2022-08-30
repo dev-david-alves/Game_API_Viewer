@@ -6,8 +6,6 @@ export const GameProvider = ({
     children,
     data,
     setData,
-    category,
-    setCategory,
     genres,
     setGenres,
     platforms,
@@ -22,8 +20,6 @@ export const GameProvider = ({
             value={{
                 data,
                 setData,
-                category,
-                setCategory,
                 genres,
                 setGenres,
                 platforms,

@@ -8,10 +8,6 @@ import { useGameContext } from "../providers/gameProvider";
 
 const MainContent = () => {
     const [search, setSearch] = useState("");
-    const handleSearchClick = (e) => {
-        setSearch("");
-    };
-
     const { data } = useGameContext();
 
     const [cards, setCards] = useState([]);
@@ -29,14 +25,6 @@ const MainContent = () => {
         handleOrderBy("metacritic");
     }, [data]);
 
-    const handleOrderBy = (orderBy) => {
-        const orderedGames = [...currentGames].sort((a, b) => {
-            return a[orderBy] > b[orderBy] ? 1 : -1;
-        });
-
-        setCurrentGames(orderedGames);
-    };
-
     return (
         <main className="w-[90%] h-screen flex flex-col items-center justify-center">
             <div className="w-full h-[90%] flex flex-col px-10">
@@ -52,14 +40,11 @@ const MainContent = () => {
                             <input
                                 type="text"
                                 value={search}
-                                placeholder="Pesquisar"
-                                className="bg-gray-200 w-[400px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
+                                placeholder="Filtrar por nome, gênero, plataforma, nota ou tempo de jogo..."
+                                className="bg-gray-200 w-[480px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
                                 onChange={(e) => setSearch(e.target.value)}
                             />
-                            <button
-                                className="hover:brightness-95 w-[40px] h-[40px] bg-[#F5F5F5] rounded-r-md flex items-center justify-center"
-                                onClick={handleSearchClick}
-                            >
+                            <button className="hover:brightness-95 w-[40px] h-[40px] bg-[#F5F5F5] rounded-r-md flex items-center justify-center">
                                 <BiSearchAlt2
                                     style={{
                                         fontSize: "1.5rem",
@@ -69,7 +54,7 @@ const MainContent = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="flex justify-evenly items-center">
+                    <div className="flex w-full h-full justify-evenly items-center">
                         <div className="mr-8 w-[430px] h-full">
                             <h3 className="text-gray-600 text-lg font-bold mb-1 mt-2">
                                 Top 3 Games na tabela (Metacritic)
