@@ -24,3 +24,26 @@ export const socialButtonsData = [
         link: "https://www.instagram.com/deivi.als/",
     },
 ];
+
+export const stepData = [
+    {
+        id: 1,
+        text: "Na tela principal há 3 cards que mostram alguns dados sobre os 3 melhores jogos segundo a avaliação do Metacritc.",
+    },
+    {
+        id: 2,
+        text: "Usando o menu (select) é possível filtrar os dados da tabela por Gênero ou Plataformas disponíveis.",
+    },
+    {
+        id: 3,
+        text: "Clicando no nome da coluna é possível ordenar a tabela baseada naquela coluna.",
+    },
+    {
+        id: 4,
+        text: "Usando a barra de pesquisa é possível filtrar os dados que aparecem na tabela baseado no que você digitar.",
+    },
+    {
+        id: 5,
+        text: "Use os botões de paginação para navegar no conteúdo da tabela.",
+    },
+];

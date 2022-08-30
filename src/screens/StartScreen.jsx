@@ -6,28 +6,7 @@ import { socialButtonsData } from "../utils/constants";
 import SocialButton from "../components/SocialButton";
 import DavidImage from "../assets/david.jpg";
 
-const stepData = [
-    {
-        id: 1,
-        text: "Na tela principal há 3 cards que mostram alguns dados sobre os 3 melhores jogos segundo a avaliação do Metacritc.",
-    },
-    {
-        id: 2,
-        text: "Usando o menu (select) é possível filtrar os dados da tabela por Gênero ou Plataformas disponíveis.",
-    },
-    {
-        id: 3,
-        text: "Clicando no nome da coluna é possível ordenar a tabela baseada naquela coluna.",
-    },
-    {
-        id: 4,
-        text: "Usando a barra de pesquisa é possível filtrar os dados que aparecem na tabela baseado no que você digitar.",
-    },
-    {
-        id: 5,
-        text: "Use os botões de paginação para navegar no conteúdo da tabela.",
-    },
-];
+import { stepData } from "../utils/constants";
 
 const StartScreen = () => {
     let navigate = useNavigate();
@@ -37,8 +16,8 @@ const StartScreen = () => {
             <div className="bg-white drop-shadow-xl flex flex-col w-[600px] px-10 py-6 items-center rounded-2xl">
                 <h1 className="text-xl font-bold">Consumo da API RAWG</h1>
                 <p className="text-center text-sm mx-auto mt-3 text-slate-500">
-                    Utiliza a API RAWG para procurar informações em tempo real
-                    sobre jogos, de todos os gêneros e todas as plataformas
+                    Utilizando a API RAWG para procurar informações em tempo
+                    real sobre jogos, de todos os gêneros e todas as plataformas
                     diponíveis na API.
                 </p>
 

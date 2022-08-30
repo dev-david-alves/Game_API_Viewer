@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import Button from "./Button";
 import Pagination from "./Pagination";
 
 import { useGameContext } from "../providers/gameProvider";

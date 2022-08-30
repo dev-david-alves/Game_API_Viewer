@@ -51,7 +51,7 @@ const HomeScreen = () => {
     }, []);
 
     return (
-        <div className="w-screen h-screen flex bg-[#FAF5EE]">
+        <div className="w-screen h-screen flex bg-white overflow-hidden">
             <GameProvider
                 data={data}
                 setData={setData}
@@ -64,10 +64,8 @@ const HomeScreen = () => {
                 selectedPlatform={selectedPlatform}
                 setSelectedPlatform={setSelectedPlatform}
             >
-                <div className="w-full flex bg-white drop-shadow-lg rounded-b-none overflow-hidden">
-                    <SideBar />
-                    <MainContent />
-                </div>
+                <SideBar />
+                <MainContent />
             </GameProvider>
         </div>
     );

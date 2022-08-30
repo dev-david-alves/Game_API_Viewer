@@ -24,7 +24,7 @@ const SideBar = () => {
                     </h2>
 
                     <p className="text-left text-sm w-[80%] mx-auto mt-7 text-slate-500">
-                        Utiliza a API RAWG para procurar informações em tempo
+                        Utilizando a API RAWG para procurar informações em tempo
                         real sobre jogos, de todos os gêneros e todas as
                         plataformas diponíveis na API.
                     </p>

@@ -55,8 +55,8 @@ const MainContent = () => {
                         </div>
                     </div>
                     <div className="flex w-full h-full justify-evenly items-center">
-                        <div className="mr-8 w-[430px] h-full">
-                            <h3 className="text-gray-600 text-lg font-bold mb-1 mt-2">
+                        <div className="mr-8 w-[500px] h-full">
+                            <h3 className="text-gray-600 text-xl font-bold mb-1 mt-3">
                                 Top 3 Games na tabela (Metacritic)
                             </h3>
                             <div className="flex flex-col justify-evenly items-center h-full">
