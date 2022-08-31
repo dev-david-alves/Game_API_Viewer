@@ -32,7 +32,10 @@ const SideBar = () => {
 
                 <div className="w-full h-full flex lg:flex-col align-center my-2 lg:mt-5">
                     {socialButtonsData.map((button) => (
-                        <div className="w-full mb-2" key={button.id}>
+                        <div
+                            className="w-full 2xl:h-full mb-2 2xl:mb-0 2xl:flex 2xl:flex-col 2xl:justify-evenly 2xl:items-center"
+                            key={button.id}
+                        >
                             <SocialButton key={button.id} button={button} />
                         </div>
                     ))}

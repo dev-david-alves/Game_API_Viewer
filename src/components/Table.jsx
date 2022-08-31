@@ -92,10 +92,10 @@ const Table = ({ search }) => {
     }, [selectedPlatform, selectedGender, data]);
 
     return (
-        <div className="mb-10 lg:mb-0 w-full drop-shadow-lg mt-5 md:mt-10 h-[450px] border-2 bg-white rounded-2xl py-4 flex flex-col">
+        <div className="mb-10 lg:mb-0 w-full 2xl:h-[600px] drop-shadow-lg mt-5 md:mt-10 h-[450px] border-2 bg-white rounded-2xl py-4 flex flex-col">
             <div className="flex flex-col md:flex-row justify-between items-center px-5 mb-5 md:mb-3">
-                <p className="text-gray-600 text-lg font-bold mb-3 md:mb-0">
-                    Todos os jogos
+                <p className="text-gray-600 2xl:text-2xl text-lg font-bold mb-3 md:mb-0">
+                    Lista de Jogos
                 </p>
                 <div className="flex flex-col md:flex-row justify-center items-center md:justify-between">
                     <select
@@ -129,10 +129,12 @@ const Table = ({ search }) => {
                 </div>
             </div>
 
-            <div style={{ overflowY: "auto", height: "70%" }}>
+            <div
+                style={{ overflowY: "auto", height: "70%", marginTop: "10px" }}
+            >
                 <table className="table-fixed w-full">
                     <thead>
-                        <tr>
+                        <tr className="bg-gray-300 py-5">
                             <th onClick={() => handleOrderBy("name")}>Nome</th>
                             <th onClick={() => handleOrderBy("genres")}>
                                 Gênero
@@ -153,24 +155,24 @@ const Table = ({ search }) => {
                             currentShownGames.map((item) => (
                                 <tr key={item.id}>
                                     <td>{item.name}</td>
-                                    <td className="text-blue-600">
+                                    <td className="text-blue-600 2xl:removeTruncate">
                                         {item.genres.map((genre, index) =>
                                             index != item.genres.length - 1
                                                 ? `${genre.name}, `
                                                 : genre.name
                                         )}
                                     </td>
-                                    <td className="text-red-600">
+                                    <td className="text-red-600 2xl:removeTruncate">
                                         {item.platforms.map((platform, index) =>
                                             index != item.platforms.length - 1
                                                 ? `${platform.platform.name}, `
                                                 : platform.platform.name
                                         )}
                                     </td>
-                                    <td className="text-green-600">
+                                    <td className="text-green-600 2xl:removeTruncate">
                                         {item.metacritic}
                                     </td>
-                                    <td className="text-amber-500">
+                                    <td className="text-amber-500 2xl:removeTruncate">
                                         {item.playtime}h
                                     </td>
                                 </tr>
