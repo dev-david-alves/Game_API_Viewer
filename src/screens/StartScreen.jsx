@@ -12,7 +12,7 @@ const StartScreen = () => {
     let navigate = useNavigate();
 
     return (
-        <div className="bg-[#FAF5EE] w-screen h-screen flex justify-center items-center">
+        <div className="bg-[#FAF5EE] w-screen h-screen flex justify-center items-center overflow-x-hidden p-5 lg:p-0">
             <div className="bg-white drop-shadow-xl flex flex-col w-[600px] px-10 py-6 items-center rounded-2xl">
                 <h1 className="text-xl font-bold">Consumo da API RAWG</h1>
                 <p className="text-center text-sm mx-auto mt-3 text-slate-500">
@@ -45,7 +45,7 @@ const StartScreen = () => {
                     ))}
                 </div>
 
-                <div className="w-full flex items-center justify-end mt-1">
+                <div className="w-full flex items-center justify-center md:justify-end mt-1">
                     <Button
                         color="bg-[#71357C]"
                         size="w-[180px]"
@@ -54,7 +54,7 @@ const StartScreen = () => {
                     />
                 </div>
 
-                <div className="border-t-4 mt-4 w-full flex items-center justify-between">
+                <div className="border-t-4 mt-4 w-full flex flex-col md:flex-row items-center justify-between">
                     <div className="flex items-center mt-4">
                         <img
                             src={DavidImage}
@@ -66,7 +66,7 @@ const StartScreen = () => {
                             David Alves
                         </h2>
                     </div>
-                    <div className="flex align-center">
+                    <div className="flex align-center mt-4 md:mt-0">
                         {socialButtonsData.map((button, index) => (
                             <div
                                 className={

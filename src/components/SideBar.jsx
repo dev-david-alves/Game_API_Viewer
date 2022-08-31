@@ -10,8 +10,8 @@ const SideBar = () => {
     let navigate = useNavigate();
 
     return (
-        <div className="w-[250px] h-screen flex flex-col align-center justify-center">
-            <div className="w-full h-[90%] border-r-4 flex flex-col justify-evenly align-center py-7">
+        <div className="w-full lg:w-[250px] lg:h-screen flex lg:flex-col align-center justify-center">
+            <div className="w-full h-[90%] lg:border-r-4 flex flex-col justify-evenly align-center pt-10 md:py-7">
                 <div className="w-full flex flex-col">
                     <img
                         src={DavidImage}
@@ -23,14 +23,14 @@ const SideBar = () => {
                         Alves
                     </h2>
 
-                    <p className="text-left text-sm w-[80%] mx-auto mt-7 text-slate-500">
+                    <p className="text-left hidden lg:block text-sm w-[80%] mx-auto mt-7 text-slate-500">
                         Utilizando a API RAWG para procurar informações em tempo
                         real sobre jogos, de todos os gêneros e todas as
                         plataformas diponíveis na API.
                     </p>
                 </div>
 
-                <div className="w-full h-full flex flex-col justify-between align-center py-10">
+                <div className="w-full h-full flex lg:flex-col align-center my-2 lg:mt-5">
                     {socialButtonsData.map((button) => (
                         <div className="w-full mb-2" key={button.id}>
                             <SocialButton key={button.id} button={button} />

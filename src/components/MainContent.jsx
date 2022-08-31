@@ -26,22 +26,24 @@ const MainContent = () => {
     }, [data]);
 
     return (
-        <main className="w-[90%] h-screen flex flex-col items-center justify-center">
-            <div className="w-full h-[90%] flex flex-col px-10">
+        <main className="w-full lg:w-[90%] lg:h-screen flex flex-col items-center justify-center">
+            <div className="w-full h-[90%] flex flex-col px-5 md:px-10">
                 <div className="flex flex-col w-full h-full">
-                    <div className="w-full flex items-center justify-between">
+                    <div className="w-full flex items-center justify-center md:justify-between flex-col md:flex-row">
                         <div className="w-full">
-                            <h1 className="text-xl font-bold">Game API</h1>
-                            <p className="text-slate-500">
+                            <h1 className="text-xl font-bold md:text-left text-center">
+                                Game API
+                            </h1>
+                            <p className="text-slate-500 md:text-left text-center">
                                 Encontre informações sobre seus jogos favoritos.
                             </p>
                         </div>
-                        <div className="flex items-center">
+                        <div className="w-full flex items-center mt-3 md:m-0">
                             <input
                                 type="text"
                                 value={search}
                                 placeholder="Filtrar por nome, gênero, plataforma, nota ou tempo de jogo..."
-                                className="bg-gray-200 w-[480px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
+                                className="bg-gray-200 w-full md:w-[480px] px-5 h-[40px] border-1 border-solid border-slate-500 rounded-l-md outline-none"
                                 onChange={(e) => setSearch(e.target.value)}
                             />
                             <button className="hover:brightness-95 w-[40px] h-[40px] bg-[#F5F5F5] rounded-r-md flex items-center justify-center">
@@ -54,9 +56,9 @@ const MainContent = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="flex w-full h-full justify-evenly items-center">
-                        <div className="mr-8 w-[500px] h-full">
-                            <h3 className="text-gray-600 text-xl font-bold mb-1 mt-3">
+                    <div className="flex w-full h-full justify-evenly items-center flex-col md:flex-row">
+                        <div className="mr-8 w-full lg:w-[380px] xl:w-[520px] h-full hidden md:block">
+                            <h3 className="text-gray-600 text-lg lg:text-xl font-bold mb-1 mt-5 md:mt-3 md:text-left text-center">
                                 Top 3 Games na tabela (Metacritic)
                             </h3>
                             <div className="flex flex-col justify-evenly items-center h-full">

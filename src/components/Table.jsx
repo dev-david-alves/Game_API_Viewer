@@ -92,15 +92,15 @@ const Table = ({ search }) => {
     }, [selectedPlatform, selectedGender, data]);
 
     return (
-        <div className="w-full drop-shadow-lg mt-10 h-[450px] border-2 bg-white rounded-2xl py-4 flex flex-col">
-            <div className="flex justify-between items-center px-5">
-                <p className="text-gray-600 text-lg font-bold mb-3">
+        <div className="mb-10 lg:mb-0 w-full drop-shadow-lg mt-5 md:mt-10 h-[450px] border-2 bg-white rounded-2xl py-4 flex flex-col">
+            <div className="flex flex-col md:flex-row justify-between items-center px-5 mb-5 md:mb-3">
+                <p className="text-gray-600 text-lg font-bold mb-3 md:mb-0">
                     Todos os jogos
                 </p>
-                <div className="flex justify-between">
+                <div className="flex flex-col md:flex-row justify-center items-center md:justify-between">
                     <select
                         name="select"
-                        className="bg-[#458B90] outline-none hover:brightness-125 py-1 mr-2 text-white rounded-full font-bold px-2 drop-shadow-lg"
+                        className="bg-[#458B90] outline-none hover:brightness-125 py-1 md:mr-2 mb-2 md:mb-0 text-white rounded-full font-bold px-2 drop-shadow-lg"
                         onChange={(e) => handleChangeGender(e.target.value)}
                     >
                         <option value={""}>Todos os Gêneros</option>

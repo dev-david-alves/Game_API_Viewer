@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ data, color }) => {
     const cardStyles =
-        "hover:brightness-110 w-[240px] rounded-lg py-2 px-4 drop-shadow-lg " +
+        "hover:brightness-110 w-[200px] lg:w-[240px] rounded-lg py-2 px-4 drop-shadow-lg " +
         color;
 
     return (

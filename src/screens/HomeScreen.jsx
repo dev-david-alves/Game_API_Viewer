@@ -51,7 +51,7 @@ const HomeScreen = () => {
     }, []);
 
     return (
-        <div className="w-screen h-screen flex bg-white overflow-hidden">
+        <div className="w-screen h-screen flex flex-col lg:flex-row bg-white overflow-y-scroll xl:overflow-hidden">
             <GameProvider
                 data={data}
                 setData={setData}
