@@ -7,7 +7,7 @@ export const options = {
 };
 
 export const fetchData = async (url, options) => {
-    const key = "276890b7f18145f587527c7904171ba2";
+    const key = "276890b7f18145f587527c7904171ba2"; // Em um projeto real essa key ficaria em um .env
     const data = await fetch(url + "?key=" + key, options);
     const json = await data.json();
 
